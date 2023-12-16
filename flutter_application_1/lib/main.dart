@@ -132,6 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
 // 16. SingleChildScrollView(스크롤 기능)
 
+// 17. Expanded
+
 class MyWidgets extends StatelessWidget {
   const MyWidgets({super.key});
 
@@ -280,7 +282,7 @@ class MyWidgets extends StatelessWidget {
 
     
     /*
-    ex) 13-1.ClipOval
+    ex) 13-1. ClipOval
 
     return ClipOval(
       child: SizedBox(
@@ -295,7 +297,7 @@ class MyWidgets extends StatelessWidget {
     */
     
     /*
-    ex) 13-2.ClipRRect
+    ex) 13-2. ClipRRect
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
@@ -311,7 +313,7 @@ class MyWidgets extends StatelessWidget {
     */
 
     /*
-    ex) 13-3.ClipRect
+    ex) 13-3. ClipRect
     return ClipRect(
       child: SizedBox(
         child: Image.network(
@@ -323,7 +325,7 @@ class MyWidgets extends StatelessWidget {
     */
 
     /*    
-    ex) 13-4.CircleAvatar
+    ex) 13-4. CircleAvatar
 
     return CircleAvatar(
       backgroundImage: NetworkImage(imageUrl),
@@ -331,7 +333,7 @@ class MyWidgets extends StatelessWidget {
     */
 
     /*    
-    ex) 15.singleChildScrollView
+    ex) 15. singleChildScrollView
 
       return Container(
         decoration: BoxDecoration(border: Border.all()),
@@ -365,7 +367,7 @@ class MyWidgets extends StatelessWidget {
     */
 
     /*    
-    ex) 16.Spacer
+    ex) 16. Spacer
 
       return Container(
         decoration: BoxDecoration(border: Border.all()),
@@ -382,7 +384,7 @@ class MyWidgets extends StatelessWidget {
     */
 
     /*    
-    ex) Expanded
+    ex) 17. Expanded
       return Container(
         decoration: BoxDecoration(border: Border.all()),
           child: Row(
@@ -507,8 +509,8 @@ ex) 1. Row
   );
   */
 
-  /*
-  ex) 5. Grid
+  
+  // ex) 5. Grid
 
         return Container(
         decoration: BoxDecoration(border: Border.all()),
@@ -527,7 +529,7 @@ ex) 1. Row
           ],
       ),
   );
-  */
+  
 
 
   }
