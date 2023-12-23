@@ -170,7 +170,18 @@ class Login extends StatelessWidget {
             ),
             Spacer(),
             TextButton(
-            onPressed: (){},
+            onPressed: (){
+              InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const Register()
+                    ),
+                  );
+                },
+              );
+            },
             child: Text(
               'New User? Create Account',
               style: TextStyle(
