@@ -7,23 +7,58 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      home: const MyHomePage(title: 'Login Page'),
+      theme: ThemeData(
+        useMaterial3: false,
+        ),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _NavigatorPageState();
+}
+
+class _NavigatorPageState extends State<MyHomePage> {
+
+  int currentIndex = 0;
+
+  List<Widget> pages = [
+    Login(),
+    Register(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: pages[currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '로그인',
+            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: '회원가입',
+            ),
+        ],
+        currentIndex: currentIndex,
+        onTap: (value) {
+          setState(() {
+            currentIndex = value;
+            print('currentIndex:$currentIndex');
+          });
+        },
+      ),
+    );
+  }
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -34,22 +69,34 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text(
-          widget.title,
+          'Login Page',
           style: TextStyle(
             color: Colors.white
           ),),
       ),
-      body: MyWidget(),
+      body: Login(),
     );
   }
 }
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class Login extends StatelessWidget {
+  const Login({super.key});
+
+  final title = 'Login Page';
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: Text(
+          '로그인 페이지',
+          style: TextStyle(
+            color: Colors.white
+          )
+        )
+      ),
+      body: SafeArea(
       child: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -133,6 +180,125 @@ class MyWidget extends StatelessWidget {
             ),
           ],
         ),
-      ));
+      ))
+    );
   }
 }
+
+
+class Register extends StatelessWidget {
+  const Register({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: Text(
+          '회원가입 페이지',
+          style: TextStyle(
+            color: Colors.white
+          ),
+          )
+      ),
+      body:     SafeArea(
+      child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                '회원가입',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),            
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 240,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: '이메일',
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    width: 100,
+                    height: 60,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue
+                      ),
+                      onPressed: (){},
+                      child: Text(
+                        '중복 확인',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),),
+                      ),
+                  ),                  
+                ],
+              ),                      
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: '비밀번호',
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: '비밀번호 확인',
+                ),
+              ),              
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: '주소 입력',
+                ),
+              ),
+              Spacer(),
+              Container(
+                width: 350,
+                height: 60,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue
+                  ),
+                  onPressed: (){
+                  },
+                  child: Text(
+                    '회원가입 완료',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),),
+                  ),
+              ),                       
+            ],
+          ),
+        )
+      )
+    );
+  }
+}
+
