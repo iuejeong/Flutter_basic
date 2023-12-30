@@ -46,7 +46,7 @@ class ShellScreen extends StatelessWidget {
     );
   }
 
-  Widget titleFuc(context) {
+  Widget titleFuc(BuildContext context) {
 
     String uri = GoRouterState.of(context).uri.toString();
 

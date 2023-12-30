@@ -25,32 +25,32 @@ final router = GoRouter(
       routes: [
         GoRoute(
           path: '/home',
-          builder: (context, state) {
+          pageBuilder: (context, state) {
             String index = state.extra.toString();
             if(index == 'null') {
               index = '0';
             }
-            return ShellHomeScreen(index: index);
+            return NoTransitionPage(child: ShellHomeScreen(index: index));
           },
         ),
         GoRoute(
           path: '/business',
-          builder: (context, state) {
+          pageBuilder: (context, state) {
             String index = state.extra.toString();
             if(index == 'null') {
               index = '1';
             }
-            return ShellBusinessScreen(index: index);
+            return NoTransitionPage(child: ShellBusinessScreen(index: index));
           },
         ),
         GoRoute(
           path: '/school',
-          builder: (context, state) {
+          pageBuilder: (context, state) {
             String index = state.extra.toString();
             if(index == 'null') {
               index = '2';
             }
-            return ShellSchoolScreen(index: index);
+            return NoTransitionPage(child: ShellSchoolScreen(index: index));
           },
         ),
       ],
