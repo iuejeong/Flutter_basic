@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:jsonplaceholder/model/todo.dart';
 import 'package:jsonplaceholder/model/user.dart';
 import 'package:retrofit/http.dart';
 
@@ -10,4 +11,7 @@ abstract class RestClient {
   
   @GET('/users')
   Future<List<User>> getUsers();
+
+  @GET('/todos')
+  Future<List<Todo>> getTodo(@Query('userId') int id);
 }
