@@ -103,9 +103,22 @@ class MyWidget extends StatefulWidget {
 
 
 class Todos extends State<MyWidget> {
-  
+  ScrollController controller = ScrollController();
   List<Todo> list = [];
   int page = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(() { 
+      if(controller.position.pixels >= controller.position.maxScrollExtent * 0.85) {
+        setState(() {
+          page++;
+          print(page);
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
